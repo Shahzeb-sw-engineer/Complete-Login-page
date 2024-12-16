@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login page</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Libre+Franklin:ital,wght@0,100..900;1,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+        rel="stylesheet">
+    <style>
+        .libre {
+            font-family: "Libre Franklin", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+        }
+
+        .poppins {
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            font-style: normal;
+            color: black;
+            font-size: 1.2rem;
+        }
+
+        .lato {
+            font-family: "Lato", sans-serif;
+            font-weight: 1000;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .loginpage {
+            width: 100%;
+            height: 100vh;
+            background-image: url(bg.jpg);
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+
+        .login {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            justify-content: center;
+            align-items: center;
+            width: 50%;
+            height: 70%;
+            /* background-color: rgba(5, 5, 5, 0.1); */
+            backdrop-filter: blur(1);
+            background-color: #86868652;
+            border-radius: 30px;
+        }
+
+        .head {
+            font-size: 4rem;
+        }
+        .alert-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 30%;
+            height: 10%;
+            z-index: 1000;
+            background-color: white;
+            color: black;
+            font-size: 22px;
+            padding: 5px;
+    
+            
+        }
+        .danger {
+            border: 2px solid red;
+        }
+        .button{
+            padding: 10px;
+            color: black;
+
+        }
+        .hidden{
+            display: none;
+        }
+        .input {
+            width: 100%;
+            padding: 20px 15px;
+            background-color: white;
+            border: none;
+            font-size: 1rem;
+            border-radius: 10px;
+        }
+
+        .flex {
+            display: flex;
+            gap: 15px;
+            text-wrap: nowrap;
+        }
+
+        .btn {
+            padding: 15px 0px;
+            border-radius: 10px;
+            background-color: #0866FF;
+            backdrop-filter: blur(1);
+            cursor: pointer;
+            color: white;
+            border: none;
+            width: 15%;
+        }
+
+        a {
+            cursor: pointer;
+        }
+
+        .create {
+            background-color: #36A420;
+            text-decoration: none;
+            padding: 10px;
+            color: white;
+            cursor: pointer;
+            border-radius: 10px;
+
+        }
+
+        .inputcontainer {
+            position: relative;
+            width: 50%;
+        }
+
+        .img {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+        }
+
+        svg {
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width : 768px) {
+            html {
+                font-size: 12px;
+            }
+
+            .login {
+                width: 80%;
+            }
+
+            .flex {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 40%;
+            }
+
+            .inputcontainer {
+                width: 70%;
+            }
+            .alert-container{
+                text-wrap: wrap;
+                width: 50%;
+                font-size: 16px;
+            }
+            .button{
+                padding: 5px;
+            }
+        }
+
+        @media only screen and (max-width: 400px) {
+            .login {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alert-container" class="alert-container hidden danger">
+        <p id="alert-message" class="text">This is a text</p>
+        <Button class="button" onclick="closealert()">OK</Button>
+    </div>
+    
+    <div class="loginpage ">
+        <form action="" class="login">
+            <h1 class="head lato ">Login</h1>
+            <div class="inputcontainer">
+                <input class="libre  input" id="Email" type="text" minlength="8" maxlength="30" placeholder="Enter your Email">
+                <img class="img" src="icons8-email-50.png" width="20px" height="20px" alt="">
+            </div>
+            <div class="inputcontainer">
+                <input class="libre input" id="input" type="password" minlength="6" maxlength="20"
+                    placeholder="Type your password">
+                <svg onclick="showtext()" class="img" width="20px" height="20px" fill="#808080"
+                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+                    <path
+                        d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z" />
+                </svg>
+            </div>
+
+
+            <div class="flex">
+                <div class="checkbox">
+                    <input class="poppins " id="Remember" type="checkbox">
+                    <label class="poppins" for="Remember">Remember me </label>
+                </div>
+
+                <a class="poppins" href="">Forgot Password?</a>
+            </div>
+
+            <button class="poppins btn" type = "button" onclick="submitform(event)">Login</button>
+            <a class="poppins create" href="">Create your account</a>
+        </form>
+    </div>
+
+    <script>
+        function showtext() {
+            let input = document.getElementById("input")
+            if (input.type === "password") {
+                input.type = "text"
+            }
+            else {
+                input.type = "password"
+            }
+        }
+        
+        const showAlert = (message)=>{
+           let container = document.getElementById("alert-container")
+            let alert_message = document.getElementById("alert-message")
+            alert_message.textContent = message
+
+            container.classList.remove("hidden")
+        
+        }
+        const closealert = ()=>{
+            let container = document.getElementById("alert-container")
+            container.classList.add("hidden")
+        }
+        function submitform(event) {
+            event.preventDefault();
+            let email = document.getElementById("Email")
+            let input = document.getElementById("input");
+            if (email.value.trim() === "" ) {
+                showAlert("Email   field cannot be empty.");
+                input.focus();
+                return;
+            }
+            else if (input.value.trim() === ""){
+                showAlert("Password  fields cannot be empty.");
+                email.focus();
+                return;
+            }
+            else if (input.value.length < 6) {
+                showAlert("Password should not be less  than 6 characters")
+                input.focus();
+                return;
+            }
+            else {
+                window.location.href = "home.html"
+                showAlert("successfullly loged in")
+            }
+        }
+
+    </script>
+</body>
+
+</html>
